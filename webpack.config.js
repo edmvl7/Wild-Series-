@@ -73,6 +73,7 @@ Encore
     //.autoProvidejQuery()
 ;
 
+Encore.enableSassLoader()
 // module.exports = Encore.getWebpackConfig();
 const fullConfig = Encore.getWebpackConfig();
 fullConfig.devServer = {
@@ -81,3 +82,4 @@ fullConfig.devServer = {
     },
 };
 module.exports = fullConfig;
+
