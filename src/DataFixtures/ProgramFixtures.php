@@ -65,7 +65,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         $program->setYear(2019);
         $manager->persist($program);
         $this->addReference('program_TheWitcher', $program);
-        $manager->flush();
+
 
         $manager->flush();
 
