@@ -54,7 +54,7 @@ class ProgramController extends AbstractController
                 'The program no season with id : '. $seasonId .' found in program\'s table.'
             );
         }
-        return $this->render("program/season_show.html.twig.", [
+        return $this->render("program/season_show.html.twig", [
             'program' => $program,
             'season' => $season,
 
