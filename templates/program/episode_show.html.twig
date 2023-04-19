@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="principal-container">
+                <h1 class="mt-0">{{ program.title ~ 'saison' ~ season.number}}</h1>
+
+                    {% if episode is defined %}
+                        <p>{{ episode.title }}</p>
+                        <p>{{ episode.synopsis }}</p>
+                        {% else %}
+                        <p>Pas d'épisode</p>
+                      {% endif %}
+
+    <a href="{{ path('program_index') }}">
+        Retour à la liste des programmes
+    </a>
+
+
+{% endblock %}

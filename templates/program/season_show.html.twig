@@ -15,6 +15,7 @@
                     <h3>Season {{ season.number }}</h3>
                     <p>{{ season.year }}</p>
                     <p>{{ season.description }}</p>
+                    {{'Episode ' ~ episodeSeason.number ~ ' : ' ~ episodeSeason.title }}
                 {% endfor %}
             </ul>
             <a href="{{ path('program_season_show', {'programId': program.id, 'seasonId': season.id}) }}"></a>

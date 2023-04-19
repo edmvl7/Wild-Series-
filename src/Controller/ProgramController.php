@@ -39,25 +39,27 @@ class ProgramController extends AbstractController
     }
 
     #[Route('/{programId}/seasons/{seasonId}',name:'season_show')]
-    public function showSeason(int $programId, int $seasonId,ProgramRepository $programRepository,SeasonRepository $seasonRepository): Response
+    #[Entity('program', options: ['mapping' => ['programId' => 'id']])]
+    #[Entity('season', options: ['mapping' => ['seasonId' => 'id']])]
+    public function showSeason(Program $program,Season $season): Response
     {
-        $program = $programRepository->findOneBy(['id' => $programId]);
-        $season = $seasonRepository->findOneBy(['id' => $seasonId]);
 
-        if(!$program) {
-            throw $this->createNotFoundException(
-                'No program with id : '.$programId.' found in program\'s table.'
-            );
-        }
-        if(!$season) {
-            throw $this->createNotFoundException(
-                'The program no season with id : '. $seasonId .' found in program\'s table.'
-            );
-        }
-        return $this->render("program/season_show.html.twig", [
+        return $this->render("program/season_show.html.twig.", [
             'program' => $program,
             'season' => $season,
+        ]);
+    }
 
+    #[Route('/{programId}/season/{seasonId}/episode/{episodeId}',name:'episode_show')]
+    #[Entity('program', options: ['mapping' => ['programId' => 'id']])]
+    #[Entity('season', options: ['mapping' => ['seasonId' => 'id']])]
+    #[Entity('episode',options: ['mapping' => ['episodeId' => 'id']])]
+    public function showEpiosde(Program $program, Season $season, Episode $episode): Response
+    {
+        return $this->render('program/episode_show.html.twig',[
+            'program' => $program,
+            'season' => $season,
+            'episode' => $episode,
         ]);
     }
 
